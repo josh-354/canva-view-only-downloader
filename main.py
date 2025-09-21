@@ -8,7 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 # --- CONFIG ---
 CANVA_URL = "https://www.canva.com/design/DAGyWSxFL7M/XMlfNrAi6jA1ygz8Zovv0Q/view"
-NUM_SLIDES = 3   # 👈 Change this to the number of slides
+NUM_SLIDES = 64  # 👈 Change this to the number of slides
 WAIT_TIME = 0.5  # seconds to wait before screenshotting each slide
 
 # --- OUTPUT FOLDER ---
@@ -22,12 +22,13 @@ driver = webdriver.Chrome(options=options)
 
 # --- OPEN CANVA ---
 driver.get(CANVA_URL)
-time.sleep(4)  # wait for Canva to load fully
+time.sleep(5)  # wait for Canva to load fully
 
 # Click to focus (so arrow keys work)
 actions = ActionChains(driver)
 actions.move_by_offset(500, 300).click().perform()
 
+time.sleep(5)  # wait UI to stabilize
 screenshots = []
 
 for i in range(NUM_SLIDES):
